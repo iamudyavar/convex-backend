@@ -1,6 +1,5 @@
 services:
   backend:
-    # Change this to :${REV} if you want to pin to a specific version
     image: ghcr.io/get-convex/convex-backend:latest
     stop_grace_period: 10s
     stop_signal: SIGINT
@@ -14,7 +13,7 @@ services:
       - INSTANCE_SECRET
       - CONVEX_RELEASE_VERSION_DEV
       - ACTIONS_USER_TIMEOUT_SECS
-      - CONVEX_CLOUD_ORIGIN=${CONVEX_CLOUD_ORIGIN:-http://127.0.0.1:$${PORT:-3210}}     
+      - CONVEX_CLOUD_ORIGIN=${CONVEX_CLOUD_ORIGIN:-http://127.0.0.1:$${PORT:-3210}}
       - CONVEX_SITE_ORIGIN=${CONVEX_SITE_ORIGIN:-http://127.0.0.1:$${SITE_PROXY_PORT:-3211}}
       - DATABASE_URL
       - DISABLE_BEACON
@@ -37,14 +36,11 @@ services:
       - S3_STORAGE_FILES_BUCKET
       - S3_STORAGE_SEARCH_BUCKET
       - S3_ENDPOINT_URL
-
     healthcheck:
       test: curl -f http://localhost:3210/version
       interval: 5s
       start_period: 10s
-
   dashboard:
-    # Change this to :${REV} if you want to pin to a specific version
     image: ghcr.io/get-convex/convex-dashboard:latest
     stop_grace_period: 10s
     stop_signal: SIGINT
