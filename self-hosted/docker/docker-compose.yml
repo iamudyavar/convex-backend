@@ -39,7 +39,7 @@ services:
       - S3_ENDPOINT_URL
 
     healthcheck:
-      test: curl -f http://localhost:3210/version
+      test: curl -f http://localhost:3210
       interval: 5s
       start_period: 10s
 
